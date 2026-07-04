@@ -1,0 +1,165 @@
+﻿@model List<Model.Data.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Kết quả tìm kiếm";
+
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Sidebar ================================================== -->
+        <div id="sidebar" class="span3">
+            <div class="well well-small">
+                @{ Html.RenderAction("HeaderCart", "Home");}
+            </div>
+            <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                @{ Html.RenderAction("ProductCategory", "ProductHome");}
+            </ul>
+            <br />
+            <div class="thumbnail">
+                <video controls="controls" style="width:100%; height:200px">
+                    <source src="/Assets/Client/images/videoquangcao/ReviewCase%20gamingDucatiMonster.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <br />
+            <div class="thumbnail">
+                <img src="/Assets/Client/themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+                <div class="caption">
+                    <h5>Kindle</h5>
+                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                </div>
+            </div><br />
+            <div class="thumbnail">
+                <img src="/Assets/Client/themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+                <div class="caption">
+                    <h5>Payment Methods</h5>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar end=============================================== -->
+        <div class="span9">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang Chủ</a> <span class="divider">/</span></li>
+                <li class="active">Tìm Kiếm</li>
+            </ul>
+            <h3> Kết quả tìm kiếm theo từ khóa : @ViewBag.Keyword </h3>
+            <hr class="soft" />
+            <p>
+                Ngày nay, ngành công nghiệp điện tử là một trong những lĩnh vực kinh doanh thành công nhất.Chúng tôi luôn giữ liên lạc với xu hướng cấu hình gaming mới nhất mạnh nhất - đó là lý do tại sao hàng hoá của chúng tôi rất phổ biến và chúng tôi có một số lượng lớn khách hàng trung thành trên toàn quốc.
+            </p>
+            <hr class="soft" />
+            <form class="form-horizontal span6">
+                <div class="control-group">
+                    <label class="control-label alignL"> Sắp Xếp</label>
+                    <select>
+                        <option>Mới Nhất</option>
+                        <option>Giá : Thấp -> Cao</option>
+                        <option>Giá : Cao -> Thấp</option>
+                        <option>Tên : A -> Z</option>
+                    </select>
+                </div>
+            </form>
+
+            <div id="myTab" class="pull-right">
+                <a href="#listView" data-toggle="tab"><span class="btn btn-large"><i class="icon-list"></i></span></a>
+                <a href="#blockView" data-toggle="tab"><span class="btn btn-large btn-primary"><i class="icon-th-large"></i></span></a>
+            </div>
+            <br class="clr" />
+            <div class="tab-content">
+                <div class="tab-pane" id="listView">
+                    @foreach (var item in Model)
+                    {
+                        var link = "/chi-tiet/" + item.MetaTitle + "-" + item.idProduct;
+                        <div class="row">
+                            <div class="span2">
+                                <img src="@item.Image" alt="@item.Name" />
+                            </div>
+                            <div class="span4">
+                                <h4>@item.Name</h4>
+                                <hr class="soft" />
+                                <p>@Html.Raw(item.Description)</p>
+                                <a class="btn btn-small pull-right" href="@link">Xem Chi Tiết</a>
+                                <br class="clr" />
+                            </div>
+                            <div class="span3 alignR">
+                                <form class="form-horizontal qtyFrm">
+                                    <h3>@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên Hệ")$</h3><br />
+                                    <a href="/them-gio-hang?productId=@item.idProduct&quantity=1" class="btn btn-large btn-primary"> Cho Vào <i class="icon-shopping-cart"></i></a>
+                                </form>
+                            </div>
+                        </div>
+                        <hr class="soft" />
+                    }
+                </div>
+
+                <div class="tab-pane active" id="blockView">
+                    <ul class="thumbnails">
+                        @foreach (var item in Model)
+                        {
+                            var link = "/chi-tiet/" + item.MetaTitle + "-" + item.idProduct;
+                            <li class="span3">
+                                <div class="thumbnail">
+                                    <a href="@link"><img src="@item.Image" alt="@item.Name" style="width:160px; height:160px" /></a>
+                                    <div class="caption">
+                                        <h5>@item.Name</h5>
+                                        <h4 style="text-align:center"><a class="btn" href="@link"> <i class="icon-zoom-in"></i></a> <a class="btn" href="/them-gio-hang?productId=@item.idProduct&quantity=1">Cho Vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên Hệ")$</a></h4>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    <hr class="soft" />
+                </div>
+
+            </div>
+            <!-- phan trang -->
+            @*<div class="pagination">
+                    <ul>
+                        <li><a href="#">&lsaquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">&rsaquo;</a></li>
+                    </ul>
+                </div>*@
+            @if (ViewBag.TotalPage > 1)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage; //tinh ra tong so page dc in ra
+                int totalPage = (int)ViewBag.TotalPage; //tinh ra tong so trang
+                int currentPage = ((int)ViewBag.Page); //tinh ra trang hien tai
+
+                //tao so link
+                var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2); //lap va hien thi trang tu 1...
+                var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
+
+                var link = "/tim-kiem?keyword=" + ViewBag.Keyword;
+                <div class="pagination">
+                    @if (currentPage >= ViewBag.Firts)
+                    {
+                        <a href="@link&page=@ViewBag.Firts" title="Trang Đầu" class="page"><<</a>
+                        <a href="@link&page=@ViewBag.Prev" title="Trang Trước" class="page"><</a>
+                    }
+                    @for (int i = startPageIndex; i <= endPageIndex; i++)
+                    {
+                        if (currentPage == i)
+                        {
+                            <a href="@link&page=@i" class="page active" title="Trang @i">@i</a>
+                        }
+                        else
+                        {
+                            <a href="@link&page=@i" class="page" title="Trang @i">@i</a>
+                        }
+                    }
+                    @if (currentPage < totalPage)
+                    {
+                        <a href="@link&page=@ViewBag.Next" class="page" title="Trang Sau">></a>
+                        <a href="@link&page=@ViewBag.Last" class="page" title="Trang Cuối">>></a>
+                    }
+                </div>
+            }
+            <br class="clr" />
+        </div>
+    </div>
+</div>

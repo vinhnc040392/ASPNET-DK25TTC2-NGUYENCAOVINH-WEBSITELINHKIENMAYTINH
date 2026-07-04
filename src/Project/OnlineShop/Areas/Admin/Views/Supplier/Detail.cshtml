@@ -1,0 +1,54 @@
+﻿@model Model.Data.Supplier
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header {
+    Quản Lý Nhà Cung Cấp
+}
+
+<div>
+    <h4>Màn Hình Xem Dữ Liệu</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2" style="text-align:center"><img src="@Html.DisplayFor(model => model.Logo)" alt="" id="picture" width="200"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Name)</td>
+                            <td>@Html.DisplayFor(model => model.Name)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Email)</td>
+                            <td>@Html.DisplayFor(model => model.Email)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                            <td>@Html.DisplayFor(model => model.Phone)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align:center">
+                                <p class="btn btn-default">@Html.ActionLink("Sửa", "Edit", new { id = Model.idSupplier })</p>
+                                <a class="btn btn-default" href="/Admin/Supplier/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

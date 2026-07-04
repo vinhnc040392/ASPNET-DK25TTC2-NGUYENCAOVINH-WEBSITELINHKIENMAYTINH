@@ -1,0 +1,27 @@
+﻿@model List<Model.Data.Menu>
+
+
+@{
+    var session = (OnlineShop.Common.UserLogin) Session[OnlineShop.Common.CommonConstants.USER_SESSION];
+}
+
+@if (session == null)
+{
+    <ul>
+        @foreach (var item in Model)
+        {
+            <a href="@item.Link" target="@item.Target"><span class="btn btn-mini btn-primary">@item.Text</span></a>
+        }
+    </ul>
+
+}
+else
+{
+    <ul>
+        Welcome! <strong>@session.Name</strong>
+        @Html.ActionLink("Đăng Xuất","Logout", "UserHome")
+    </ul>
+
+}
+
+

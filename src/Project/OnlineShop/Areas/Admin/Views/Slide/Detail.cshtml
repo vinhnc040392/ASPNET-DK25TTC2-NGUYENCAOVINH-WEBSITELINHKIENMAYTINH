@@ -1,0 +1,59 @@
+﻿@model Model.Data.Slide
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Hình Ảnh Slide
+}
+
+<div>
+    <h4>Màn Hình Xem Dữ Liệu</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-2" style="text-align:center"><img src="@Html.DisplayFor(model => model.Image)" alt="" id="picture" width="200"></div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.idSlide)</td>
+                            <td>@Html.DisplayFor(model => model.idSlide)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.DisplayOrder)</td>
+                            <td>@Html.DisplayFor(model => model.DisplayOrder)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.CreateDate)</td>
+                            <td>@Html.DisplayFor(model => model.CreateDate)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Status)</td>
+                            <td>@Html.DisplayFor(model => model.Status)</td>
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" style="text-align:center">
+                                <p class="btn btn-default">@Html.ActionLink("Sửa", "Edit", new { id = Model.idSlide })</p>
+                                <a class="btn btn-default" href="/Admin/Slide/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model Model.Data.Content
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div id="sidebar" class="span3">
+            <div class="well well-small">
+                @{ Html.RenderAction("HeaderCart", "Home");}
+            </div>
+            <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                @{ Html.RenderAction("ProductCategory", "ProductHome");}
+            </ul>
+            <br />
+            <div class="thumbnail">
+                <video controls="controls" style="width:100%; height:200px">
+                    <source src="/Assets/Client/images/videoquangcao/ReviewCase%20gamingDucatiMonster.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <br />
+            <div class="thumbnail">
+                <img src="/Assets/Client/themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+                <div class="caption">
+                    <h5>Kindle</h5>
+                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                </div>
+            </div><br />
+            <div class="thumbnail">
+                <img src="/Assets/Client/themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+                <div class="caption">
+                    <h5>Payment Methods</h5>
+                </div>
+            </div>
+        </div>
+        <div class="span9">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang Chủ</a> <span class="divider">/</span></li>
+                <li class="active"><a href="/tin-tuc">Tin Tức</a> <span class="divider">/</span></li>
+                <li>@Model.Title</li>
+            </ul>
+            <h3> Tin Tức </h3>
+            <hr class="soft" />
+            <span style="font-size: 15px; font-weight: 700; display: block; margin-bottom: 5px; text-decoration: none; color: #db0006;">@Model.Title</span>
+
+            <span style="font-size: 11px;display: block;margin-bottom: 5px;color: #999;">Thời Gian Ðang : @Model.CreateDate</span>
+
+                       @Html.Raw(Model.Detail)
+            <span>Nguồn Từ : <a href="@Model.ContenSource">@Model.ContenSource</a></span>
+            <br class="clr" />
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model Model.Data.FeedBack
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Thành Viên
+}
+
+<div>
+    <h4>Màn Hình Xem Dữ Liệu</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.idFeedBack)</td>
+                            <td>@Html.DisplayFor(model => model.idFeedBack)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Name)</td>
+                            <td>@Html.DisplayFor(model => model.Name)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                            <td>@Html.DisplayFor(model => model.Phone)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Email)</td>
+                            <td>@Html.DisplayFor(model => model.Email)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Address)</td>
+                            <td>@Html.DisplayFor(model => model.Address)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Content)</td>
+                            <td>@Html.DisplayFor(model => model.Content)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.CreateDate)</td>
+                            <td>@Html.DisplayFor(model => model.CreateDate)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Status)</td>
+                            <td>@Html.DisplayFor(model => model.Status)</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="text-align:center">
+                                <a class="btn btn-default" href="/Admin/FeedBack/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

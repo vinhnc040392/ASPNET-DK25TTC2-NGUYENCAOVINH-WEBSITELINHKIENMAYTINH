@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var listabout = (List<Model.Data.About>)ViewBag.ListAbout;
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Sidebar end=============================================== -->
+        <div class="span12" id="mainCol">
+            @foreach (var item in listabout)
+            {
+                <h3 style="font-family: arial, helvetica, sans-serif; font-size: 16pt;height: 40px;line-height: 40px; background: #db0006;color: #fff;padding: 0 11px;"><strong>@item.Name</strong></h3>
+                
+
+                <img src="@item.Image" style="width: 100%;" /><br /><br />
+                <p>@Html.Raw(item.Description)</p>
+                <p>@Html.Raw(item.Detail)</p>
+            }
+        </div>
+    </div>
+</div>
+
+

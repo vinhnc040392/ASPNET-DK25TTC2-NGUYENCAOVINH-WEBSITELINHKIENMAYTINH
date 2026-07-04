@@ -1,0 +1,59 @@
+﻿@model OnlineShop.Areas.Admin.Models.LoginModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Đăng Nhập</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link rel="stylesheet" href="/Assets/Admin/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Assets/Admin/css/login.css" />
+    <link rel="stylesheet" href="/Assets/Admin/plugins/magic/magic.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <img src="/Assets/Admin/img/anphatpc.png" id="logoimg" alt="Logo" style="padding-left:0px"/>
+        </div>
+        <div class="tab-content">
+            <div id="login" class="tab-pane active">
+                @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                {
+                    <fieldset class="form-signin">
+                        <p class="text-muted text-center btn-block btn btn-primary btn-rect">
+                            Nhập Thông Tin Đăng Nhập
+                        </p>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @placeholder = "Gmail", @autofocus = "autofocus" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type="Password", @placeholder = "Password" })
+                        </div>
+                        <button class="btn text-muted text-center btn-danger" type="submit">Đăng Nhập</button>
+                        <br />
+                        @Html.ValidationSummary(false, "", new { @style = "color:red;" })
+                    </fieldset>
+                }
+            </div>
+            <div id="forgot" class="tab-pane">
+                <form action="index.html" class="form-signin">
+                    <p class="text-muted text-center btn-block btn btn-primary btn-rect">Nhập Gmail Của Bạn</p>
+                    <input type="email" required="required" placeholder="Your E-mail" class="form-control" />
+                    <br />
+                    <button class="btn text-muted text-center btn-success" type="submit">Khôi Phục Mật Khẩu</button><br /><br />
+                </form>
+            </div>
+        </div>
+        <div class="text-center">
+            <ul class="list-inline">
+                <li><a class="text-muted" href="#login" data-toggle="tab">Đăng Nhập</a></li>
+                <li><a class="text-muted" href="#forgot" data-toggle="tab">Quên Mật Khẩu</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="/Assets/Admin/plugins/jquery-2.0.3.min.js"></script>
+    <script src="/Assets/Admin/plugins/bootstrap/js/bootstrap.js"></script>
+    <script src="/Assets/Admin/js/login.js"></script>
+</body>
+</html>

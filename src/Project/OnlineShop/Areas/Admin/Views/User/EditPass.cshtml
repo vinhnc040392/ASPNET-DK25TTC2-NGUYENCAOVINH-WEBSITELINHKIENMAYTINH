@@ -1,0 +1,92 @@
+﻿@model Model.Data.User
+
+@{
+    ViewBag.Title = "EditPass";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Người Dùng
+}
+
+@using (Html.BeginForm("EditPass", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Màn Hình Sửa Mật Khẩu</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idUser)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control",@autofocus="autofocus" ,@type="Password"} })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idUserGroup, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.DropDownList("idUserGroup", null, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.idUserGroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.DropDownListFor(model => model.Status, (List<SelectListItem>)ViewBag.listStatus, "--- Chọn ---", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div style="text-align:center;">
+            <input type="submit" value="Thay Đổi Mật Khẩu" class="btn btn-default" style="color: #428bca;text-decoration: none;" />
+            <a class="btn btn-default" href="/Admin/User/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+        </div>
+    </div>
+}
+<br /><br /><br />

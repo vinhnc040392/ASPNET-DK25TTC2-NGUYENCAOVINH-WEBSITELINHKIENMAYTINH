@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Trang Quản Trị Website</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <link rel="stylesheet" href="/Assets/Admin/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Assets/Admin/css/main.css" />
+    <link rel="stylesheet" href="/Assets/Admin/css/theme.css" />
+    <link rel="stylesheet" href="/Assets/Admin/css/MoneAdmin.css" />
+    <link rel="stylesheet" href="/Assets/Admin/plugins/Font-Awesome/css/font-awesome.css" />
+    <link href="/Assets/Admin/css/layout2.css" rel="stylesheet" />
+    <link href="/Assets/Admin/plugins/flot/examples/examples.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Assets/Admin/plugins/timeline/timeline.css" />
+
+</head>
+<body class="padTop53 ">
+    <!-- MAIN WRAPPER -->
+    <div id="wrap">
+        <!-- HEADER SECTION -->
+        <div id="top">
+            <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 5px;padding-bottom: 5px;">
+                <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+                    <i class="icon-align-justify"></i>
+                </a>
+                <!-- LOGO SECTION -->
+                <header class="navbar-header">
+                    <a href="/Admin/HomeAdmin/Index" class="navbar-brand"><img src="/Assets/Admin/img/anphatpc.png" height="45" alt="" /></a>
+                </header>
+                <!-- END LOGO SECTION -->
+                <ul class="nav navbar-top-links navbar-right" style="padding-top: 10px;">
+                    <!-- MESSAGES SECTION -->
+                    @{ Html.RenderAction("TopMenu", "HomeAdmin");}
+                </ul>
+
+            </nav>
+
+        </div>
+        <!-- END HEADER SECTION -->
+        <!-- MENU SECTION -->
+        <div id="left">
+            <div class="media user-media well-small">
+                <a class="user-link" href="#">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="/Assets/Admin/img/LeDung.jpg" />
+                </a>
+                <br />
+                <div class="media-body">
+                    @{
+                        var session = (OnlineShop.Common.UserLogin)Session[OnlineShop.Common.CommonConstants.USER_SESSION];
+                    }
+                    <h5 class="media-heading"> @session.Name </h5>
+                    <ul class="list-unstyled user-info">
+
+                        <li>
+                            <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a> @session.idUserGroup
+
+                        </li>
+
+                    </ul>
+                </div>
+                <br />
+            </div>
+
+            <ul id="menu" class="collapse">
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                        <i class="icon-home"> </i>&nbsp;Trang Chủ <span class="pull-right"><i class="icon-angle-left"></i></span>
+                    </a>
+                    <ul class="collapse" id="component-nav">
+                        <li><a href="@Url.Action("Index","HomeAdmin")"><i class="icon-eye-open"></i> Admin </a></li>
+                        <li><a href="http://localhost:54063/"><i class="icon-eye-open"></i> Client </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#form-nav">
+                        <i class="icon-th-list"> </i>Quản Lý Sản Phẩm <span class="pull-right"><i class="icon-angle-left"></i></span>
+                    </a>
+                    <ul class="collapse" id="form-nav">
+                        <li><a href="@Url.Action("Index","Category")"><i class="icon-eye-open"></i> Danh Mục Sản Phẩm </a></li>
+                        <li><a href="@Url.Action("Index","Product")"><i class="icon-eye-open"></i> Danh Sách Sản Phẩm </a></li>
+                        <li><a href="@Url.Action("Index","Supplier")"><i class="icon-eye-open"></i> Nhà Cung Cấp </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#chart-nav">
+                        <i class="icon-sitemap"></i>&nbsp;Quản Lý Menu
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="chart-nav">
+                        <li><a href="@Url.Action("Index","MenuType")"><i class="icon-eye-open"></i> Danh Mục Menu </a></li>
+                        <li><a href="@Url.Action("Index","Menu")"><i class="icon-eye-open"></i> Danh Sách Menu </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#DDL-nav">
+                        <i class="icon-comments-alt"></i>&nbsp;Quản Lý Phản Hồi
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="DDL-nav">
+                        <li><a href="@Url.Action("Index","Contact")"><i class="icon-eye-open"></i> Liên Hệ </a></li>
+                        <li><a href="@Url.Action("Index","FeedBack")"><i class="icon-eye-open"></i> Phản Hồi </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#DDL4-nav">
+                        <i class="icon-film"></i>&nbsp;Quản Lý Slide & Video
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="DDL4-nav">
+                        <li><a href="@Url.Action("Index","Slide")"><i class="icon-eye-open"></i> Trình Chiếu Slide </a></li>
+                        <li><a href="@Url.Action("Index","VideoAdvertisement")"><i class="icon-eye-open"></i> Video Quảng Cáo </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#error-nav">
+                        <i class="icon-book"></i>&nbsp;Quản Lý Thông Tin
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="error-nav">
+                        <li><a href="@Url.Action("Index","About")"><i class="icon-eye-open"></i> Giới Thiệu </a></li>
+                        <li><a href="@Url.Action("Index","Footer")"><i class="icon-eye-open"></i> Footer </a></li>
+                    </ul>
+                </li>
+
+                <li class="panel">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#blank-nav">
+                        <i class="icon-user"></i>&nbsp;Quản Lý Tài Khoản
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="blank-nav">
+                        <li><a href="@Url.Action("Index","User")"><i class="icon-eye-open"></i>&nbsp;Quản Lý Người Dùng </a></li>
+                        <li><a href="@Url.Action("Index","UserGroup")"><i class="icon-eye-open"></i>&nbsp;Quản Lý Quyền </a></li>
+                    </ul>
+                </li>                
+
+                <li><a href="@Url.Action("Index","Order")"><i class="icon-shopping-cart"> </i>&nbsp;Quản Lý Đơn Hàng</a></li>
+
+                <li><a href="@Url.Action("Index","Content")"><i class="icon-pencil"></i>&nbsp;Quản Lý Tin Tức </a></li>
+
+                <li><a href="login.html"><i class="icon-trello"></i>&nbsp;Thống Kê Hệ Thống </a></li>
+
+            </ul>
+        </div>
+        <!--END MENU SECTION -->
+        <!--PAGE CONTENT -->
+        <div id="content">
+            <div class="inner" style="min-height: 700px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>@RenderSection("header", required: true)</h1>
+                    </div>
+                </div>
+                <hr />
+
+                @if (TempData["AlertMessage"] != null)
+                {
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                        @TempData["AlertMessage"]
+                    </div>
+                }
+                @RenderBody()
+            </div>
+        </div>
+        <!--END PAGE CONTENT -->
+        <!-- RIGHT STRIP  SECTION -->
+        <div id="right">
+            <div class="well well-small">
+                <ul class="list-unstyled">
+                    <li>Tài Khoản &nbsp; : <span>@Html.Action("GetAllQuanlityUser", "HomeAdmin")</span></li>
+                    <li>Số Đang Truy Cập &nbsp; : <span>1</span></li>
+                    <li>Số Lần Truy Cập &nbsp; : <span>120</span></li>
+                </ul>
+            </div>
+            <div class="well well-small">
+                <a href="/Admin/Product/Create" class="btn btn-block" style="border-color:#CCCCCC">Thêm Sản Phẩm</a>
+                <a href="/Admin/Category/Create" class="btn btn-primary btn-block" style="border-color:#3276B1">Thêm Danh Mục</a>
+                <a href="/Admin/Supplier/Create" class="btn btn-info btn-block" style="border-color:#39B3D7">Thêm Nhà Cung Cấp</a>
+                <a href="/Admin/Order/Index" class="btn btn-success btn-block" style="border-color:#47A447">Đơn Hàng</a>
+                <a href="/Admin/User/Create" class="btn btn-danger btn-block" style="border-color:#D2322D">Thêm Tài Khoản</a>
+                <a href="/Admin/Slide/Create" class="btn btn-warning btn-block" style="border-color:#ED9C28">Thêm Ảnh Slide</a>
+                <a href="/Admin/FeedBack/Index" class="btn btn-inverse btn-block" style="border-color:#DDDDDD">Phản Hồi Khách Hàng</a>
+            </div>
+
+        </div>
+        <!-- END RIGHT STRIP  SECTION -->
+    </div>
+
+    <!--END MAIN WRAPPER -->
+    <!-- FOOTER -->
+    <div id="footer">
+        <p>&copy; Admin &nbsp;2018 &nbsp;</p>
+    </div>
+    <!--END FOOTER -->
+    <!-- GLOBAL SCRIPTS -->
+    <script src="/Assets/Admin/plugins/jquery-2.0.3.min.js"></script>
+    <script>
+        $(function () {
+            $('#AlertBox').removeClass('hide');
+            $('#AlertBox').delay(1000).slideUp(500);
+        });
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="/Assets/Admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Assets/Admin/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <!-- END GLOBAL SCRIPTS -->
+    <!-- PAGE LEVEL SCRIPTS -->
+    <script src="/Assets/Admin/plugins/flot/jquery.flot.js"></script>
+    <script src="/Assets/Admin/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="/Assets/Admin/plugins/flot/jquery.flot.time.js"></script>
+    <script src="/Assets/Admin/plugins/flot/jquery.flot.stack.js"></script>
+    <script src="/Assets/Admin/js/for_index.js"></script>
+    <script src="/Assets/Admin/js/plugins/ckfinder/ckfinder.js"></script>
+    <script src="/Assets/Admin/js/plugins/ckeditor/ckeditor.js"></script>
+    @RenderSection("jsFooter", required: false)
+
+    <!-- END PAGE LEVEL SCRIPTS -->
+</body>
+
+<!-- END BODY -->
+</html>

@@ -1,0 +1,44 @@
+﻿@model Model.Data.UserGroup
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Quyền Người Dùng
+}
+
+@using (Html.BeginForm("Create", "UserGroup", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Màn Hình Nhập Dữ Liệu</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idUserGroup, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.idUserGroup, new { htmlAttributes = new { @class = "form-control", @autofocus = "autofocus" } })
+                @Html.ValidationMessageFor(model => model.idUserGroup, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div style="text-align:center;">
+            <input type="submit" value="Lưu Dữ Liệu" class="btn btn-default" style="color: #428bca;text-decoration: none;" />
+            <a class="btn btn-default" href="/Admin/UserGroup/Create" style="color: #428bca;text-decoration: none;">Làm Mới</a>
+            <a class="btn btn-default" href="/Admin/UserGroup/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+        </div>
+    </div>
+}
+

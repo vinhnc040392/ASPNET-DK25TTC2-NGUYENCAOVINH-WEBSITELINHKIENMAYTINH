@@ -1,0 +1,33 @@
+# Build outputs
+bin/
+obj/
+*.user
+*.suo
+
+# Visual Studio
+.vs/
+*.cachefile
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+
+# NuGet
+packages/
+*.nupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# Tooling
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Other
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db

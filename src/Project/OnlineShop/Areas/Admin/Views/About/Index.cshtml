@@ -1,0 +1,83 @@
+﻿@model PagedList.IPagedList<Model.Data.About>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý About
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div id="div-5" class="accordion-body collapse in body">
+            <div class="form-group row">
+                <div class="col-lg-4"></div>
+                <div class="col-lg-5">
+                    @using (Html.BeginForm("Index", "About", FormMethod.Get))
+                    {
+                        <div class="form-group input-group">
+                            <input type="text" class="form-control" name="searchString" value="@ViewBag.SearchString" placeholder="tìm kiếm theo tên" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="icon-search"></i></button>
+                            </span>
+                        </div>
+                    }
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Danh Sách About
+                <div style="float:right">
+                    <p class="btn btn-default btn-sm" style="margin-top:-5px">
+                        @Html.ActionLink("Thêm Mới", "Create")
+                    </p>
+                    <p class="btn btn-default btn-sm" style="margin-top:-5px">
+                        @Html.ActionLink("Xuất Excel", "ExportToExcel")
+                    </p>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Lời Giới Thiệu</th>
+                                <th>Đường Dẫn URL</th>
+                                <th>Ngày Tạo</th>
+                                <th>Hình Ảnh</th>
+                                <th>Trạng Thái</th>
+                                <th>Thao Tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr id="row_@item.idAbout">
+                                    <td>@item.Name</td>
+                                    <td>@item.MetaTitle</td>
+                                    <td>@item.CreateDate</td>
+                                    <td><img src="@item.Image" style="width:100px; height:60px" /></td>
+                                    <td>@(item.Status.GetValueOrDefault(false) ? "Kích Hoạt" : "Không Kích Hoạt")</td>
+                                    <td><a href="/Admin/About/Edit/@item.idAbout" class="glyphicon glyphicon-pencil"></a> | @Ajax.ActionLink(" ", "Delete", new { @id = item.idAbout }, new AjaxOptions { Confirm = "Bạn có muốn xóa bản ghi này không?", OnComplete = "$('#row_" + @item.idAbout + "').remove()", HttpMethod = "Delete" }, new { @class = "glyphicon glyphicon-trash" })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div style="float:right">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

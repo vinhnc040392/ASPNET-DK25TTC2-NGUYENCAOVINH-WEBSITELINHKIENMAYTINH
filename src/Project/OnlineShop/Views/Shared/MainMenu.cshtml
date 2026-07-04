@@ -1,0 +1,6 @@
+﻿@model List<Model.Data.Menu>
+
+@foreach (var item in Model)
+{
+    <li><a href="@item.Link" target="@item.Target">@item.Text</a></li>
+}

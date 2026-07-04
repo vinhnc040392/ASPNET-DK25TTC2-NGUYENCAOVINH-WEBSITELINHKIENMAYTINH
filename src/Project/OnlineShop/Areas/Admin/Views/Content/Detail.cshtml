@@ -1,0 +1,79 @@
+﻿@model Model.Data.Content
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Tin Tức
+}
+
+<div>
+    <h4>Màn Hình Xem Dữ Liệu</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-3" style="text-align:center">
+            <img src="@Html.DisplayFor(model => model.Image)" alt="" id="picture" width="260">
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-8">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.MetaTitle)</td>
+                            <td>@Html.DisplayFor(model => model.MetaTitle)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Title)</td>
+                            <td>@Html.DisplayFor(model => model.Title)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Description)</td>
+                            <td>@Html.DisplayFor(model => model.Description)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Detail)</td>
+                            <td>@Html.DisplayFor(model => model.Detail)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.ContenSource)</td>
+                            <td>@Html.DisplayFor(model => model.ContenSource)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.CreateDate)</td>
+                            <td>@Html.DisplayFor(model => model.CreateDate)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.idUser)</td>
+                            <td>@Html.DisplayFor(model => model.User.Name)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Status)</td>
+                            <td>@Html.DisplayFor(model => model.Status)</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2" style="text-align:center">
+                                <p class="btn btn-default">@Html.ActionLink("Sửa", "Edit", new { id = Model.idContent })</p>
+                                <a class="btn btn-default" href="/Admin/Content/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

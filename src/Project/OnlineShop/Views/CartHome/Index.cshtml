@@ -1,0 +1,98 @@
+﻿@model List<OnlineShop.Models.CartItem>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    decimal total = 0;
+}
+@section jsFooter {
+    <script src="/Assets/Client/bootstrap/js/controller/cartController.js"></script>
+}
+
+<div class="container">
+    <div class="row">
+        <!-- Sidebar ================================================== -->
+        <div id="sidebar" class="span3">
+            <div class="well well-small">
+                @{ Html.RenderAction("HeaderCart", "Home");}
+            </div>
+            <ul id="sideManu" class="nav nav-tabs nav-stacked">
+                @{ Html.RenderAction("ProductCategory", "ProductHome");}
+            </ul>
+            <br />
+            <div class="thumbnail">
+                <video controls="controls" style="width:100%; height:200px">
+                    <source src="/Assets/Client/images/videoquangcao/ReviewCase%20gamingDucatiMonster.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <br />
+            <div class="thumbnail">
+                <img src="/Assets/Client/themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
+                <div class="caption">
+                    <h5>Kindle</h5>
+                    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Cho Vào <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
+                </div>
+            </div><br />
+            <div class="thumbnail">
+                <img src="/Assets/Client/themes/images/payment_methods.png" title="Bootshop Payment Methods" alt="Payments Methods">
+                <div class="caption">
+                    <h5>Payment Methods</h5>
+                </div>
+            </div>
+        </div>
+        <!-- Sidebar end=============================================== -->
+        <div class="span9">
+            <ul class="breadcrumb">
+                <li><a href="/">Trang Chủ</a> <span class="divider">/</span></li>
+                <li class="active">Giỏ Hàng Của Bạn</li>
+            </ul>
+            <h3>  Giỏ Hàng [ <small>@Model.Count Sản Phẩm</small> ]</h3>
+            <hr class="soft" />
+            @if (Model.Count > 0)
+            {
+                <p>Để xóa sản phẩm khỏi giỏ hàng, bấm <img src="/Assets/Client/bootstrap/img/icon_del.png" /> . Để mua hàng, click "Gửi đơn hàng"</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Mã Sản Phẩm</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th style="text-align:center">Hình Ảnh Sản Phẩm</th>
+                            <th style="text-align:center">Số Lượng</th>
+                            <th style="text-align:center">Đơn Giá</th>
+                            <th style="text-align:center">Thành Tiền</th>
+                            <th style="text-align:center">Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            total += item.Quantity * item.Product.Price.GetValueOrDefault(0);
+                            <tr>
+                                <td style="vertical-align: middle">@item.Product.Code</td>
+                                <td style="vertical-align: middle">@item.Product.Name</td>
+                                <td style="vertical-align: middle;text-align:center"><img src="@item.Product.Image" width="120" height="120" alt="@item.Product.Name" /></td>
+                                <td style="vertical-align: middle; text-align:center"><input class="txtQuantity" style="max-width:34px" data-id="@item.Product.idProduct" value="@item.Quantity" size="16" type="number"></td>
+                                <td style="vertical-align: middle;text-align:center">@item.Product.Price.GetValueOrDefault(0).ToString("N0") VND</td>
+                                <td style="vertical-align: middle;text-align:center">@((item.Product.Price.GetValueOrDefault(0) * @item.Quantity).ToString("N0")) VND</td>
+                                <td style="vertical-align: middle; text-align:center;"><a href="#" class="btn-delete" data-id="@item.Product.idProduct" ><img src="/Assets/Client/bootstrap/img/icon_del.png" /></a></td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="6" style="text-align:right"><strong>Tổng Số Tiền Cần Thanh Toán</strong></td>
+                            <td class="label label-important" style="display:block"> <strong> @total.ToString("N0") VND </strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id="btnContinue" class="btn btn-small pull-left" style="margin-right: 30px;">Tiếp Tục Mua Hàng</button>
+                <button id="btnUpdate" class="btn btn-small pull-left" style="margin-right: 30px;">Cập Nhật Giỏ Hàng</button>
+                <button id="btnDeleteAll" class="btn btn-small pull-left" style="margin-right: 30px;">Xóa Giỏ Hàng</button>
+                <button id="btnPayment" class="btn btn-small pull-left" style="margin-right: 30px;">Thanh Toán</button>
+            }
+            else
+            {
+                <span class="alert alert-danger">Chưa Có Sản Phẩm Nào Trong Giỏ Hàng</span>
+            }
+        </div>
+    </div>
+</div>
+

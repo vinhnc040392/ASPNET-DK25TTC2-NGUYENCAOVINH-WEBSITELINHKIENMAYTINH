@@ -1,0 +1,44 @@
+﻿@model Model.Data.MenuType
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Danh Mục Menu
+}
+
+@using (Html.BeginForm("Edit", "MenuType", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>MenuType</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.idMenuType)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idMenuType, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.idMenuType, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.idMenuType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-lg-4" })
+            <div class="col-lg-4">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @autofocus = "autofocus" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div style="text-align:center;">
+            <input type="submit" value="Cập Nhật Dữ Liệu" class="btn btn-default" style="color: #428bca;text-decoration: none;" />
+            <a class="btn btn-default" href="/Admin/MenuType/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+        </div>
+    </div>
+}
+<br /><br /><br />

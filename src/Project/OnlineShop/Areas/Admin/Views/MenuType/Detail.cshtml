@@ -1,0 +1,47 @@
+﻿@model Model.Data.MenuType
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section header {
+    Quản Lý Danh Mục Menu
+}
+
+<div>
+    <h4>Màn Hình Xem Dữ Liệu</h4>
+    <hr />
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.idMenuType)</td>
+                            <td>@Html.DisplayFor(model => model.idMenuType)</td>
+                        </tr>
+
+                        <tr>
+                            <td>@Html.DisplayNameFor(model => model.Name)</td>
+                            <td>@Html.DisplayFor(model => model.Name)</td>
+                        </tr>                       
+
+                        <tr>
+                            <td colspan="2" style="text-align:center">
+                                <p class="btn btn-default">@Html.ActionLink("Sửa", "Edit", new { id = Model.idMenuType })</p>
+                                <a class="btn btn-default" href="/Admin/MenuType/Index" style="color: #428bca;text-decoration: none;">Quay Lại</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
