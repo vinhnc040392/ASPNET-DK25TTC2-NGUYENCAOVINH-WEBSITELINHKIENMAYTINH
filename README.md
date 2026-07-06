@@ -390,9 +390,11 @@ OnlineShopLapTop/
 
 ---
 
-## 10. Thông tin tác giả
+## Liên hệ:
 
-Đồ án được phát triển bởi sinh viên Trường Đại học Trà Vinh (TVU).
+Sinh viên: Nguyễn Cao Vinh
+Lớp:DK25TTC2
+SĐT:0966317873
 
 ---
 
