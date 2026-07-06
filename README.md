@@ -392,9 +392,11 @@ OnlineShopLapTop/
 
 ## Liên hệ:
 
-**Sinh viên: Nguyễn Cao Vinh
-**Lớp:DK25TTC2
-**SĐT:0966317873
+Sinh viên: Nguyễn Cao Vinh
+
+Lớp:DK25TTC2
+
+SĐT:0966317873
 
 ---
 
